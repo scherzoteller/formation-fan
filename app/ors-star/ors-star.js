@@ -3,12 +3,14 @@
 
 	var app = angular.module('ors-star', []);
 
-	app.directive('orsStar', function () {
+	app.directive('orsStar', function () { 
 		return {
 			restrict: 'E',
             controller: function OrsStarCtrl($element){
                 'ngInject';
                 console.log('inside controller', arguments);
+                let html = 'toto';
+                $element.html(html);
             }
 		};
 	});
