@@ -8,8 +8,11 @@ const produitStateUrl = require('./tmpl/produit.html');
 const serviceStateUrl = require('./tmpl/service.html');
 
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	'ngInject';
+	$locationProvider
+		.html5Mode(true)
+		.hashPrefix('!');
 
 	var accueilState = {
 		name: 'accueil',
@@ -38,5 +41,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider.state(serviceState);
 
 	$urlRouterProvider.otherwise('/');
+
+});
+
+
+app.run(function ($compile, $rootScope) {
+	'ngInject';
+	skel.on("load", function () {
+		console.log('changed view...');
+		const elt = $('#nav');
+		$compile(elt)($rootScope);
+	});
 
 });
