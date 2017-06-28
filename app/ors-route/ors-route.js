@@ -21,7 +21,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	};
 	var serviceState = {
 		name: 'service',
-		url: '/',
+		url: '/service',
 		template: serviceStateUrl
 	};
 	var produitState = {
@@ -31,7 +31,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	};
 	var contactState = {
 		name: 'contact',
-		url: '/',
+		url: '/contact',
 		template: contactStateUrl
 	};
 
@@ -41,16 +41,5 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$stateProvider.state(serviceState);
 
 	$urlRouterProvider.otherwise('/');
-
-});
-
-
-app.run(function ($compile, $rootScope) {
-	'ngInject';
-	skel.on("load", function () {
-		console.log('changed view...');
-		const elt = $('#nav');
-		$compile(elt)($rootScope);
-	});
 
 });
